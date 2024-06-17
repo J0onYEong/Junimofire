@@ -1,2 +1,2 @@
 ## Junimofire
-Alamofire와 SwiftConcurrency가 합쳐진 Junios의 라이브러리입니다.
+SwiftConcurrency기반의 네트워크 모듈입니다.
