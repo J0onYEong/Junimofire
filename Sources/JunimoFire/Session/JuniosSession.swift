@@ -29,7 +29,7 @@ public class JuniosSession {
 
 
 // MARK: - data request
-extension JuniosSession {
+public extension JuniosSession {
     
     func request(request: URLRequest, interceptor: JFRequestInterceptor?) -> JFDataRequest {
         
