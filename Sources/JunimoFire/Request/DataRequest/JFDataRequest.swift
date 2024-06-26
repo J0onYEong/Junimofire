@@ -9,13 +9,15 @@ import Foundation
 
 public class JFDataRequest {
     
-    var interceptor: JFRequestInterceptor?
+    private var interceptor: JFRequestInterceptor?
+    
     unowned var session: URLSession
     
     /// JFDataRequest에서 사용되는 요청배열입니다.
     var requests: MutableProperty<[URLRequest]>
     
     /// 응답검증에 사용되는 검증자 배열입니다.
+    /// validation진행중에 내부적으로라도 검증자가 추가되는 것을 막기위해 actor화하였습니다.
     var validators: MutableProperty<[JFValidation]> = .init(value: [])
     
     func currentRequest() async -> URLRequest { await requests.value.last! }

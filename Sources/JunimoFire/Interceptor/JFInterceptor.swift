@@ -9,8 +9,8 @@ import Foundation
 
 public protocol JFRequestInterceptor: JFRequestAdpater & JFRequestRetrier {
     
-    var adapters: [JFRequestAdpater] { get }
-    var retriers: [JFRequestRetrier] { get }
+    var adapters: [JFRequestAdpater] { get set }
+    var retriers: [JFRequestRetrier] { get set }
 }
 public extension JFRequestInterceptor { var label: String { "Unknown" } }
 
