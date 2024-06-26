@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol JFRequestInterceptor: JFRequestAdpater & JFRequestRetrier {
+public protocol JFRequestInterceptor: AnyObject, JFRequestAdpater & JFRequestRetrier {
     
     var adapters: [JFRequestAdpater] { get set }
     var retriers: [JFRequestRetrier] { get set }

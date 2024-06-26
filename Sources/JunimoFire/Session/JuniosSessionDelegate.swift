@@ -17,8 +17,8 @@ public class JuniosSessionDelegate: NSObject {
 
 extension JuniosSessionDelegate: URLSessionTaskDelegate {
     
-//    public func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
-//    
-//        completionHandler(.useCredential, URLCredential(trust: challenge.protectionSpace.serverTrust!))
-//    }
+    public func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+    
+        completionHandler(.useCredential, URLCredential(trust: challenge.protectionSpace.serverTrust!))
+    }
 }
