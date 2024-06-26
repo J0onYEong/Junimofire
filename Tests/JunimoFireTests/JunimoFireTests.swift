@@ -35,22 +35,30 @@ final class JunimoFireTests: XCTestCase {
         }
         
         let interceptor = JFInterceptor.interceptor(adaper: adapter, retrier: retrier)
+         
+        let mySession = JuniosSession(
+            configuration: .default,
+            adapters: [adapter],
+            retriers: [retrier],
+            validators: [
+                { data, response in
+                    
+                    if let httpResponse = response as? HTTPURLResponse {
+                        
+                        print(httpResponse.statusCode)
+                    }
+                    
+    //                return .failure(info: .init(idenifier: 1, reason: "test reason"))
+                    return .success
+                }
+            ]
+        )
         
         var request = URLRequest(url: URL(string: "https://666129ed63e6a0189fe8b1c9.mockapi.io/users")!)
         request.httpMethod = "GET"
         
-        let result = try await JF
-            .request(request: request, interceptor: interceptor)
-            .validate { data, response in
-                
-                if let httpResponse = response as? HTTPURLResponse {
-                    
-                    print(httpResponse.statusCode)
-                }
-                
-//                return .failure(info: .init(idenifier: 1, reason: "test reason"))
-                return .success
-            }
+        let result = try await mySession
+            .request(request: request)
             .responseDecodable(type: [UserDTO].self)
         
         print(result)
