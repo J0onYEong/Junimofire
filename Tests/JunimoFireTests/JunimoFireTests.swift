@@ -33,8 +33,6 @@ final class JunimoFireTests: XCTestCase {
             
             return .retryWithDelay(request: request, seconds: 5)
         }
-        
-        let interceptor = JFInterceptor.interceptor(adaper: adapter, retrier: retrier)
          
         let mySession = JuniosSession(
             configuration: .default,
@@ -54,7 +52,7 @@ final class JunimoFireTests: XCTestCase {
             ]
         )
         
-        var request = URLRequest(url: URL(string: "https://666129ed63e6a0189fe8b1c9.mockapi.io/users")!)
+        var request = URLRequest(url: URL(string: "https://667c2cf33c30891b865ba28e.mockapi.io/users")!)
         request.httpMethod = "GET"
         
         let result = try await mySession
