@@ -35,8 +35,8 @@ public class JuniosSession {
         self.adapters = adapters
         self.retriers = retriers
         self.vaildators = validators
+        }
     }
-}
 
 // MARK: - data request
 public extension JuniosSession {
@@ -44,10 +44,10 @@ public extension JuniosSession {
     func request(request: URLRequest, interceptor: JFRequestInterceptor? = nil) async -> JFDataRequest {
         
         // 세션 어뎁터&리트라이어 적용
-        var willAddintercepator = interceptor
+        let willAddintercepator = interceptor ?? JFInterceptor()
         
-        willAddintercepator?.adapters.append(contentsOf: adapters)
-        willAddintercepator?.retriers.append(contentsOf: retriers)
+        willAddintercepator.adapters.append(contentsOf: adapters)
+        willAddintercepator.retriers.append(contentsOf: retriers)
         
         let dataRequest = JFDataRequest(
             request: request,
